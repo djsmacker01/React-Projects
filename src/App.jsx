@@ -1,3 +1,9 @@
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core ']
+
+function getRandomVal(val) {
+  
+}
+
 function Header() {
   return (
     <header>
