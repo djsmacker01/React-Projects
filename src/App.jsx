@@ -1,7 +1,7 @@
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core ']
 
 function getRandomVal(val) {
-  
+  return Math.floor(Math.random() *(val + 1))
 }
 
 function Header() {
