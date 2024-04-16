@@ -21,9 +21,13 @@ function Header() {
   );
 }
 
-function CoreConcept() {
+function CoreConcept(props) {
   return (
-    
+    <li>
+      <img src="" alt="" />
+      <h3>Title</h3>
+      <p>Description</p>
+    </li>
   )
 }
 
