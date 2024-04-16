@@ -4,7 +4,8 @@ function getRandomVal(val) {
   return Math.floor(Math.random() * (val + 1));
 }
 
-function Header() {
+
+ export default function Header() {
   const description = reactDescriptions[getRandomVal(2)];
   return (
     <header>
