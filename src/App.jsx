@@ -1,5 +1,5 @@
 import headerImg from './assets/react-core-concepts.png'
-import componentImg from './assets/c
+import componentImg from './assets/components.png'
 
 
 
@@ -48,7 +48,7 @@ function App() {
             <CoreConcept
               title="Components"
               description="The core UI building block"
-              img={}
+              image={componentImg}
             />
             <CoreConcept  />
             <CoreConcept />
