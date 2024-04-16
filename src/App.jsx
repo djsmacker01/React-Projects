@@ -1,5 +1,5 @@
-import headerImg from './assets/react-core-concepts.png'
-import componentImg from './assets/components.png'
+// import headerImg from './assets/react-core-concepts.png'
+// import componentImg from './assets/components.png'
 import { CORE_CONCEPTS } from './data.js'
 import Header from './components/Header.jsx'
 
