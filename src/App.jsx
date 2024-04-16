@@ -6,15 +6,6 @@ import Header from './components/Header.jsx'
 
 
 
-function CoreConcept({image, description,title}) {
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{ title}</h3>
-      <p>{description}</p>
-    </li>
-  )
-}
 
 
 function App() {
