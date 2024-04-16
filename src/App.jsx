@@ -2,6 +2,7 @@
 // import componentImg from './assets/components.png'
 import { CORE_CONCEPTS } from './data.js'
 import Header from './components/Header.jsx'
+import CoreConcept from './components/CoreConcept.jsx';
 
 
 
