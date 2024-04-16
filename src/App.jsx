@@ -46,7 +46,7 @@ function App() {
           <h2>Core Concepts</h2>
           <ul>
             <CoreConcept
-              title="Components"
+              title={CORE_CONCEPTS[0].title}
               description="The core UI building block"
               image={componentImg}
             />
