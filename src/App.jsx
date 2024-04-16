@@ -1,4 +1,4 @@
-
+import headerImg from '.'
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core ']
 
 
