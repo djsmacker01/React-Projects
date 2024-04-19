@@ -20,6 +20,9 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
+        <section id='examples'>
+         <h2>Example</h2>
+        </section>
         <h2>Time to get started!</h2>
       </main>
     </div>
