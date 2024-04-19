@@ -1,7 +1,12 @@
 import React from 'react'
 
-export default function TabButton({children}) {
+export default function TabButton({ children }) {
+    function handleClick() { 
+    alert('Button clicked')
+    }
   return (
-      <li><button>{children }</button></li>
+      <li>
+          <button onClick={handleClick}>{children}</button>
+      </li>
   )
 }
