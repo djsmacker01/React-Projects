@@ -21,7 +21,10 @@ function App() {
           </ul>
         </section>
         <section id='examples'>
-         <h2>Example</h2>
+          <h2>Example</h2>
+          <menu>
+            
+          </menu>
         </section>
         <h2>Time to get started!</h2>
       </main>
