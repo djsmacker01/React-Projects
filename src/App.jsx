@@ -7,7 +7,7 @@ import { EXAMPLES } from './dataContent.js';
 
 function App() {
 
-  const [selectedTopic, setSelectedTopic] = useState("Please Click on any Button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
 
   //  let tabContent = 
 
