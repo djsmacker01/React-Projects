@@ -5,9 +5,7 @@ import TabButton from './components/TabButton.jsx';
 import { useState } from 'react';
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState(
-    "Please Click on any Button"
-  );
+  const [selectedTopic, setSelectedTopic] = useState("Please Click on any Button");
 
   //  let tabContent = 
 
