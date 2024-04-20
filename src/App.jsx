@@ -27,7 +27,7 @@ function App() {
         <section id="examples">
           <h2>Example</h2>
           <menu>
-            <TabButton onSelect={handleClick}>Components</TabButton>
+            <TabButton onSelect={()=> handleClick()}>Components</TabButton>
             <TabButton onSelect={handleClick}>JSX</TabButton>
             <TabButton onSelect={handleClick}>Props</TabButton>
             <TabButton onSelect={handleClick}>State</TabButton>
