@@ -4,7 +4,11 @@ import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-   function handleClick(selectedButton) {
+
+   let tabContent = 'Please Click on any Button'
+
+  function handleClick(selectedButton) {
+     tabContent = selectedButton
      alert(selectedButton);
    }
   return (
@@ -32,6 +36,7 @@ function App() {
             <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
             <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
           </menu>
+          {tabContent}
         </section>
         <h2>Time to get started!</h2>
       </main>
