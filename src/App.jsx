@@ -3,6 +3,7 @@ import Header from './components/Header/Header.jsx'
 import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 import { useState } from 'react';
+import { EXAMPLES } from './dataContent.js';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
             <p></p>
             <pre>
               <code>
-                
+
               </code>
             </pre>
           </div>
