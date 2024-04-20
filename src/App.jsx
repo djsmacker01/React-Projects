@@ -10,7 +10,7 @@ function App() {
   //  let tabContent = 
 
   function handleClick(selectedButton) {
-     setSelectedTopic = selectedButton
+     setSelectedTopic (selectedButton)
      alert(selectedButton);
    }
   return (
@@ -38,7 +38,7 @@ function App() {
             <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
             <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
           </menu>
-          {tabContent}
+          {setSelectedTopic}
         </section>
         {/* <h2>Time to get started!</h2> */}
       </main>
