@@ -39,7 +39,9 @@ function App() {
             <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
             <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
           </menu>
-          
+          <div id='tab-content'>
+            
+          </div>
         </section>
         {/* <h2>Time to get started!</h2> */}
       </main>
