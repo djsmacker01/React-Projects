@@ -13,7 +13,7 @@ function App() {
 
   function handleClick(selectedButton) {
      setSelectedTopic (selectedButton)
-     alert(selectedButton);
+    //  alert(selectedButton);
    }
   return (
     <div>
