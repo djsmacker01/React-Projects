@@ -4,8 +4,8 @@ import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-   function handleClick() {
-     alert("Button clicked");
+   function handleClick(selectedButton) {
+     alert(selectedButton);
    }
   return (
     <div>
