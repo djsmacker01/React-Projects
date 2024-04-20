@@ -5,7 +5,7 @@ import TabButton from './components/TabButton.jsx';
 import { useState } from 'react';
 
 function App() {
-  
+
   const [selectedTopic, setSelectedTopic] = useState("Please Click on any Button");
 
   //  let tabContent = 
@@ -39,7 +39,7 @@ function App() {
             <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
             <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
           </menu>
-          {selectedTopic}
+          
         </section>
         {/* <h2>Time to get started!</h2> */}
       </main>
