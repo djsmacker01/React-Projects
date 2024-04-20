@@ -38,9 +38,9 @@ function App() {
             <TabButton onSelect={() => handleClick("components")}>
               Components
             </TabButton>
-            <TabButton onSelect={() => handleClick("Jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick("Props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("State")}>State</TabButton>
+            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
           <div id="tab-content">
             <h3>{EXAMPLES[selectedTopic].title}</h3>
