@@ -7,7 +7,9 @@ export const EXAMPLES = {
 function Welcome() {
   return <h1>Hello, World!</h1>;
 }`,
-  },
+    },
+    
+    
   jsx: {
     title: 'JSX',
     description:
