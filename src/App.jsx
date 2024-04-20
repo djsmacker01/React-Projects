@@ -27,10 +27,10 @@ function App() {
         <section id="examples">
           <h2>Example</h2>
           <menu>
-            <TabButton onSelect={()=> handleClick()}>Components</TabButton>
-            <TabButton onSelect={handleClick}>JSX</TabButton>
-            <TabButton onSelect={handleClick}>Props</TabButton>
-            <TabButton onSelect={handleClick}>State</TabButton>
+            <TabButton onSelect={()=> handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={()=> handleClick('Jsx')}>JSX</TabButton>
+            <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
+            <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
           </menu>
         </section>
         <h2>Time to get started!</h2>
