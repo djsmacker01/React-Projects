@@ -12,7 +12,7 @@ function App() {
   //  let tabContent = 
 
   function handleClick(selectedButton) {
-     tabContent = selectedButton
+     setSelectedTopic = selectedButton
      alert(selectedButton);
    }
   return (
