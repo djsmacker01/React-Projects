@@ -9,12 +9,13 @@ function App() {
 
   const [selectedTopic, setSelectedTopic] = useState();
 
-  //  let tabContent = 
 
   function handleClick(selectedButton) {
-     setSelectedTopic (selectedButton)
+    setSelectedTopic(selectedButton);
     //  alert(selectedButton);
-   }
+
+    //  let tabContent =
+  }
   return (
     <div>
       <Header />
