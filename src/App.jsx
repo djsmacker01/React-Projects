@@ -14,7 +14,7 @@ function App() {
     setSelectedTopic(selectedButton);
     //  alert(selectedButton);
 
-    //  let tabContent =
+     let tabContent = <p>Please click on the button to select a topic</p>
   }
   return (
     <div>
