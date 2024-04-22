@@ -56,7 +56,7 @@ function App() {
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          {!selectedTopic && <p>Please Select a topic</p>}
+          {/* {!selectedTopic && <p>Please Select a topic</p>}
           {selectedTopic && (
             <div id="tab-content">
               <h3>{EXAMPLES[selectedTopic].title}</h3>
@@ -65,7 +65,7 @@ function App() {
                 <code>{EXAMPLES[selectedTopic].code}</code>
               </pre>
             </div>
-          )}
+          )} */}
         </section>
         {/* <h2>Time to get started!</h2> */}
       </main>
