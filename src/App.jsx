@@ -64,7 +64,11 @@ function App() {
               onSelect={() => handleClick("props")}>
               Props
             </TabButton>
-            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
+            <TabButton
+              isSelected={selectedTopic === "state"}
+              onSelect={() => handleClick("state")}>
+              State
+            </TabButton>
           </menu>
           {tabContent}
           {/* {!selectedTopic && <p>Please Select a topic</p>}
