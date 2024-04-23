@@ -1,34 +1,30 @@
-import { CORE_CONCEPTS } from './data.js'
-import Header from './components/Header/Header.jsx'
-import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
-import TabButton from './components/TabButton.jsx';
-import { useState } from 'react';
-import { EXAMPLES } from './dataContent.js';
+import { CORE_CONCEPTS } from "./data.js";
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
+import { useState } from "react";
+import { EXAMPLES } from "./dataContent.js";
 
 function App() {
-
   const [selectedTopic, setSelectedTopic] = useState();
-
 
   function handleClick(selectedButton) {
     setSelectedTopic(selectedButton);
     //  alert(selectedButton);
-
   }
 
-   let tabContent = <p>Please click on the button to select a topic</p>;
+  let tabContent = <p>Please click on the button to select a topic</p>;
   if (selectedTopic) {
-  tabContent = (
-    <div id="tab-content">
-      <h3>{EXAMPLES[selectedTopic].title}</h3>
-      <p>{EXAMPLES[selectedTopic].description}</p>
-      <pre>
-        <code>{EXAMPLES[selectedTopic].code}</code>
-      </pre>
-    </div>
-  );
-  
-}
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
   return (
     <div>
       <Header />
@@ -39,7 +35,7 @@ function App() {
             {CORE_CONCEPTS.map((conceptItem) => (
               <CoreConcept {...conceptItem} />
             ))}
-            
+
             {/* <CoreConcept
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
