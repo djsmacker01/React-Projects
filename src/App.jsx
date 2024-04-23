@@ -39,6 +39,7 @@ function App() {
             {CORE_CONCEPTS.map((conceptItem) => (
               <CoreConcept {...conceptItem} />
             ))}
+            
             {/* <CoreConcept
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
