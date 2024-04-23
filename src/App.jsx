@@ -16,7 +16,7 @@ function App() {
 
   }
 
-     let tabContent = <p>Please click on the button to select a topic</p>;
+   let tabContent = <p>Please click on the button to select a topic</p>;
   if (selectedTopic) {
   tabContent = (
     <div id="tab-content">
@@ -67,6 +67,7 @@ function App() {
               </pre>
             </div>
           )} */}
+
         </section>
         {/* <h2>Time to get started!</h2> */}
       </main>
