@@ -59,7 +59,11 @@ function App() {
               onSelect={() => handleClick("jsx")}>
               JSX
             </TabButton>
-            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton
+              isSelected={selectedTopic === "props"}
+              onSelect={() => handleClick("props")}>
+              Props
+            </TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
           {tabContent}
