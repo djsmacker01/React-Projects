@@ -52,7 +52,7 @@ function App() {
             <TabButton onSelect={() => handleClick("components")}>
               Components
             </TabButton>
-            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
+            <TabButton className='active' onSelect={() => handleClick("jsx")}>JSX</TabButton>
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
