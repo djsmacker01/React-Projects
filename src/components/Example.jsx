@@ -3,22 +3,26 @@ import TabButton from "./TabButton";
 export default function Example() {
      const [selectedTopic, setSelectedTopic] = useState();
 
-  function handleClick(selectedButton) {
-    setSelectedTopic(selectedButton);
-    //  alert(selectedButton);
-  }
+     function handleClick(selectedButton) {
+       setSelectedTopic(selectedButton);
+       //  alert(selectedButton);
+     }
 
-  let tabContent = <p>Please click on the button to select a topic</p>;
-  if (selectedTopic) {
-    tabContent = (
-      <div id="tab-content">
-        <h3>{EXAMPLES[selectedTopic].title}</h3>
-        <p>{EXAMPLES[selectedTopic].description}</p>
-        <pre>
-          <code>{EXAMPLES[selectedTopic].code}</code>
-        </pre>
-      </div>
-    );
+     let tabContent = <p>Please click on the button to select a topic</p>;
+     if (selectedTopic) {
+       tabContent = (
+         <div id="tab-content">
+           <h3>{EXAMPLES[selectedTopic].title}</h3>
+           <p>{EXAMPLES[selectedTopic].description}</p>
+           <pre>
+             <code>{EXAMPLES[selectedTopic].code}</code>
+           </pre>
+         </div>
+       );
+     }
+
+
+
     return (
       <section id="examples">
         <h2>Example</h2>
