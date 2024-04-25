@@ -1,4 +1,4 @@
-
+import CoreConcepts from "./components/CoreConcept/CoreConcepts.jsx";
 import Header from "./components/Header/Header.jsx";
 import TabButton from "./components/TabButton.jsx";
 import { useState } from "react";
