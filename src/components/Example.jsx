@@ -1,4 +1,5 @@
 import TabButton from "./TabButton";
+import { EXAMPLES } from "../dataContent";
 
 export default function Example() {
      const [selectedTopic, setSelectedTopic] = useState();
