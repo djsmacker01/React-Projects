@@ -23,8 +23,6 @@ export default function Example() {
        );
      }
 
-
-
     return (
       <section id="examples">
         <h2>Example</h2>
