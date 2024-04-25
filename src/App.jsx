@@ -6,7 +6,7 @@ import { EXAMPLES } from "./dataContent.js";
 
 function App() {
  
-  }
+
   return (
     <div>
       <Header />
