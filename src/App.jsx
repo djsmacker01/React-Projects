@@ -28,7 +28,7 @@ function App() {
     <div>
       <Header />
       <main>
-        
+        <CoreConcepts /> 
         <section id="examples">
           <h2>Example</h2>
           <menu>
