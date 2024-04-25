@@ -1,3 +1,6 @@
+import CoreConcept from "./CoreConcept";
+
+
 export default function CoreConcepts() {
     return (
       <section id="core-concepts">
