@@ -1,3 +1,4 @@
+import { useState } from "react";
 import TabButton from "./TabButton";
 import { EXAMPLES } from "../dataContent";
 
