@@ -1,9 +1,12 @@
 export default function Tabs ({children}) {
-    return <>
-    <menu>
-         {children}   
-    </menu>
-    </>
+    return (
+      <>
+            <menu>
+                
+        </menu>
+        {children}
+      </>
+    );
         
     
 }
