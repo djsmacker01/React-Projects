@@ -4,6 +4,7 @@ export default function Tabs ({children}) {
             <menu>
                 
         </menu>
+        
         {children}
       </>
     );
