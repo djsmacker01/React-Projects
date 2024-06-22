@@ -1,9 +1,9 @@
 // App.jsx
 import React, { useState } from "react";
-import CreateCommunityModal from "./CreateCommunityModal";
-import "./App.css"; // For styling
+import CreateCommunityModal from "./Community/CreateCommunityModal";
+// import "./App.css"; // For styling
 
-const App = () => {
+const App1 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -19,13 +19,13 @@ const App = () => {
       <button
         onClick={handleOpenModal}
         style={{
-          backgroundColor: "orange",
+          backgroundColor: "green",
           borderRadius: "50%",
           width: "50px",
           height: "50px",
-          position: "fixed",
+          position: "absolute",
           bottom: "20px",
-          right: "20px",
+          left: "20px",
         }}>
         +
       </button>
@@ -34,4 +34,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App1;
