@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 //place holder post for data
 const demoPost = [
@@ -21,7 +21,8 @@ const demoPost = [
 ];
 
 const CommunityPage = () => {
-    
+   
+    const [isJoined, setIsJoined] = useState(false)
 
   return (
     <div>CommunityPage</div>
