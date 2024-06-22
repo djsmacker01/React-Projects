@@ -37,8 +37,24 @@ const CommunityPage = () => {
             setNewPost('')
         }
     }
-  return (
-    <div>CommunityPage</div>
+    return (
+      <div className="community-page">
+            <div className="header">
+                <h1>{communityTitle}</h1>
+                {!isJoined && <button onClick={handleJoin}>Join</button>}
+            </div>
+            <div className="posts">
+                {posts.map(post => (
+                    <Post key={post.id} post={post} isJoined={isJoined} />
+                ))}
+            </div>
+            {isJoined && (
+                <div className="create-post">
+                    <textarea value={newPost} onChange={(e) => setNewPost(e.target.value)} placeholder="Write a post..."></textarea>
+                    <button onClick={handlePost}>Post</button>
+                </div>
+            )}
+        </div>
   )
 }
 
