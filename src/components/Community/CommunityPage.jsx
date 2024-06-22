@@ -23,7 +23,20 @@ const demoPost = [
 const CommunityPage = () => {
    
     const [isJoined, setIsJoined] = useState(false)
+    const [posts, setPosts] = useState(demoPost)
+    const [newPost, setNewPost] = useState('')
+    
 
+    const handleJoin = () => {
+        setIsJoined(true);
+    }
+
+    const handlePost = () => {
+        if (newPost.trim()) {
+            setPosts([...posts, { id: posts.length + 1, user: 'CurrentUser', newPost, time: 'Just now', upvotes: 0, downvotes: 0 }])
+            setNewPost('')
+        }
+    }
   return (
     <div>CommunityPage</div>
   )
