@@ -1,7 +1,10 @@
 // App.jsx
 import React, { useState } from "react";
 import CreateCommunityModal from "./Community/CreateCommunityModal";
-// import "./App.css"; // For styling
+import ReactDOM from "react-dom";
+
+import CommunityPage from "./Community/CommunityPage";
+import "./Community/CommunityPage"; // For styling
 
 const App1 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +33,7 @@ const App1 = () => {
         +
       </button>
       <CreateCommunityModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <CommunityPage communityTitle="Toxicology" />
     </div>
   );
 };
