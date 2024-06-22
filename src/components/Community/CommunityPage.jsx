@@ -58,4 +58,22 @@ const CommunityPage = () => {
   )
 }
 
+const Post = ({ post, isJoined }) => {
+  return (
+    <div className="post">
+      <div className="post-header">
+        <span>{post.user}</span>
+        <span>{post.time}</span>
+      </div>
+      <div className="post-content">
+        <p>{post.comment}</p>
+      </div>
+      <div className="post-actions">
+        <button>Upvote {post.upvotes}</button>
+        <button>Downvote {post.downvotes}</button>
+        {isJoined && <button>Comment</button>}
+      </div>
+    </div>
+  );
+};
 export default CommunityPage
