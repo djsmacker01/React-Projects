@@ -137,7 +137,7 @@ const CreateCommunity = ({ onCreate }) => {
       rule3,
       thumbnail,
     };
-    onCreate(newCommunity);
+    // onCreate(newCommunity);
   };
 
   const handleFileChange = (e) => {
