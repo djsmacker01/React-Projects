@@ -5,7 +5,7 @@ const CommunityToggle = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    // setIsModalOpen(true);/
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
