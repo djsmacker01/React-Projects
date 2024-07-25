@@ -24,6 +24,7 @@ const CommunityPage = () => {
       comments: [],
     },
   ]);
+  const [showPostForm, setShowPostForm] = useState(false);
 
   const handleJoin = () => {
     setJoined(!joined);
@@ -40,6 +41,7 @@ const CommunityPage = () => {
       comments: [],
     };
     setPosts([...posts, newPost]);
+    setShowPostForm(false); // Hide the form after posting
   };
 
   const handleUpdatePost = (postId, content) => {
@@ -76,8 +78,12 @@ const CommunityPage = () => {
           />
         ))}
       </div>
-      {joined && <PostForm onSubmit={handleCreatePost} />}
-      <button className="create-post-button">+</button>
+      {showPostForm && joined && <PostForm onSubmit={handleCreatePost} />}
+      <button
+        className="create-post-button"
+        onClick={() => setShowPostForm(!showPostForm)}>
+        {showPostForm ? "x" : "+"}
+      </button>
     </div>
   );
 };
