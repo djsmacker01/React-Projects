@@ -78,13 +78,15 @@
   background-color: #0056b3;
 }
 
-.post-form {
+.post-form,
+.comments-section form {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 }
 
-.post-form textarea {
+.post-form textarea,
+.comments-section input {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -92,7 +94,8 @@
   border-radius: 4px;
 }
 
-.post-form button {
+.post-form button,
+.comments-section button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -101,6 +104,18 @@
   cursor: pointer;
 }
 
-.post-form button:hover {
+.post-form button:hover,
+.comments-section button:hover {
   background-color: #0056b3;
+}
+
+.comments-section {
+  margin-top: 1rem;
+}
+
+.comments-section p {
+  background-color: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
 }
