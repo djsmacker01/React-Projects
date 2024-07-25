@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// import "./App.css";
 const CommentPage = ({ post, onComment, onLike, onDislike }) => {
   const [commentContent, setCommentContent] = useState("");
 
