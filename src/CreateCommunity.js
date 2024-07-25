@@ -1,56 +1,39 @@
 // src/components/CreateCommunity.js
 import React from 'react';
-import { TextField, Button, Typography, Box, Container } from '@mui/material';
+import './CreateCommunity.css';
 
 const CreateCommunity = () => {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Create Community
-        </Typography>
-        <TextField
-          label="Community Title"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Creation Date"
-          type="date"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          defaultValue="2024-06-14"
-        />
-        <TextField
-          label="Thumbnail Photo"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Rule 1"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Rule 2"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Rule 3"
-          fullWidth
-          margin="normal"
-        />
-        <Box sx={{ mt: 2 }}>
-          <Button variant="contained" color="primary" fullWidth>
-            Create Community
-          </Button>
-        </Box>
-      </Box>
-    </Container>
+    <div className="create-community-container">
+      <h1>Create Community</h1>
+      <form>
+        <div className="form-group">
+          <label htmlFor="communityTitle">Community Title</label>
+          <input type="text" id="communityTitle" name="communityTitle" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="creationDate">Creation Date</label>
+          <input type="date" id="creationDate" name="creationDate" defaultValue="2024-06-14" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="thumbnailPhoto">Thumbnail Photo</label>
+          <input type="text" id="thumbnailPhoto" name="thumbnailPhoto" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="rule1">Rule 1</label>
+          <input type="text" id="rule1" name="rule1" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="rule2">Rule 2</label>
+          <input type="text" id="rule2" name="rule2" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="rule3">Rule 3</label>
+          <input type="text" id="rule3" name="rule3" />
+        </div>
+        <button type="submit" className="create-community-button">Create Community</button>
+      </form>
+    </div>
   );
 };
 
