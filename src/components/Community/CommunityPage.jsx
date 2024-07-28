@@ -7,7 +7,7 @@ const CommunityPage = ({
   posts,
   onJoin,
   isJoined,
-  // onPostClick,
+  onPostClick,
   onLike,
   onDislike,
 }) => {
