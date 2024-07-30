@@ -171,53 +171,104 @@
 // export default CommunityPage;
 
 
-import React, { useState } from "react";
-import "./CommunityPage.css"; // Importing CSS for styling
+// import React, { useState } from "react";
+// import "./CommunityPage.css"; // Importing CSS for styling
+
+// const CommunityPage = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [communityName, setCommunityName] = useState("");
+
+//   const handleOpenModal = () => {
+//     setIsModalOpen(true);
+//   };
+
+//   const handleCloseModal = () => {
+//     setIsModalOpen(false);
+//     setCommunityName("");
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     // Logic to create a community using communityName
+//     console.log("Community Created:", communityName);
+//     handleCloseModal();
+//   };
+
+//   return (
+//     <div className="community-page">
+//       <button className="add-community-btn" onClick={handleOpenModal}>
+//         +
+//       </button>
+
+//       {isModalOpen && (
+//         <div className="modal">
+//           <h2>Create a Community</h2>
+//           <form onSubmit={handleSubmit}>
+//             <input
+//               type="text"
+//               value={communityName}
+//               onChange={(e) => setCommunityName(e.target.value)}
+//               placeholder="Enter community name"
+//               required
+//             />
+//             <button type="submit">Create</button>
+//             <button type="button" onClick={handleCloseModal}>
+//               Cancel
+//             </button>
+//           </form>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default CommunityPage;
+
+
+
+
+
+
+
+import React, { useState, useEffect } from "react";
+import CommunityList from "./CommunityList";
+import { initialCommunities, initialPosts } from "./data";
 
 const CommunityPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [communityName, setCommunityName] = useState("");
+  const [communities, setCommunities] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  // Simulate fetching data
+  useEffect(() => {
+    setCommunities(initialCommunities);
+    setPosts(initialPosts);
+  }, []);
+
+  const handleJoin = (id) => {
+    setCommunities(
+      communities.map((community) =>
+        community.id === id ? { ...community, joined: true } : community
+      )
+    );
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setCommunityName("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Logic to create a community using communityName
-    console.log("Community Created:", communityName);
-    handleCloseModal();
+  const handleLike = (postId) => {
+    setPosts(
+      posts.map((post) =>
+        post.id === postId ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
   };
 
   return (
-    <div className="community-page">
-      <button className="add-community-btn" onClick={handleOpenModal}>
-        +
-      </button>
-
-      {isModalOpen && (
-        <div className="modal">
-          <h2>Create a Community</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={communityName}
-              onChange={(e) => setCommunityName(e.target.value)}
-              placeholder="Enter community name"
-              required
-            />
-            <button type="submit">Create</button>
-            <button type="button" onClick={handleCloseModal}>
-              Cancel
-            </button>
-          </form>
-        </div>
-      )}
+    <div>
+      <h1>Communities</h1>
+      <CommunityList
+        communities={communities}
+        onJoin={handleJoin}
+        posts={posts}
+        onLike={handleLike}
+      />
     </div>
   );
 };
