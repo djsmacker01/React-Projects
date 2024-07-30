@@ -1,6 +1,6 @@
 // src/components/Post.js
 import React, { useState } from "react";
-import "./Post.css";
+import "../components/Post.css";
 
 function Post({ post, addComment }) {
   const [commentText, setCommentText] = useState("");
