@@ -1,0 +1,53 @@
+/* src/components/Sidebar.css */
+.sidebar {
+  width: 300px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-left: 1px solid #e9ecef;
+  border-radius: 5px;
+}
+
+.topics {
+  margin-bottom: 20px;
+}
+
+.topics h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #343a40;
+}
+
+.topic {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.topic:hover {
+  background-color: #dee2e6;
+}
+
+.rules {
+  border-top: 1px solid #e9ecef;
+  padding-top: 10px;
+}
+
+.rules h3 {
+  font-size: 18px;
+  color: #343a40;
+}
+
+.rules ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.rules li {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
