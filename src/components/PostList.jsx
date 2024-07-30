@@ -1,7 +1,7 @@
 // src/components/PostList.js
 import React from "react";
 import Post from "./Post";
-import "./PostList.css";
+import "../components/PostList.jsx";
 
 function PostList({ posts, addComment }) {
   return (
