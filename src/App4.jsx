@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import PostList from "./components/PostList";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Siderbar.jsx";
 import "./App.css";
 
 function App4() {
