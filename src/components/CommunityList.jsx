@@ -1,7 +1,15 @@
 import React from "react";
-import Community from "./Community";
+import Community from "../components/Community";
 
-const CommunityList = ({ communities, onJoin, posts, onLike }) => (
+const CommunityList = ({
+  communities,
+  onJoin,
+  posts,
+  onLike,
+  onComment,
+  onCommentUpvote,
+  onCommentDelete,
+}) => (
   <div>
     {communities.map((community) => (
       <Community
@@ -10,6 +18,9 @@ const CommunityList = ({ communities, onJoin, posts, onLike }) => (
         onJoin={onJoin}
         posts={posts.filter((post) => post.communityId === community.id)}
         onLike={onLike}
+        onComment={onComment}
+        onCommentUpvote={onCommentUpvote}
+        onCommentDelete={onCommentDelete}
       />
     ))}
   </div>
