@@ -230,19 +230,142 @@
 
 
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+// import CommunityList from "../components/CommunityList";
+// import { initialCommunities, initialPosts } from "../components/data";
+
+// const CommunityPage = () => {
+//   const [communities, setCommunities] = useState([]);
+//   const [posts, setPosts] = useState([]);
+
+//   // Simulate fetching data
+//   useEffect(() => {
+//     setCommunities(initialCommunities);
+//     setPosts(initialPosts);
+//   }, []);
+
+//   const handleJoin = (id) => {
+//     setCommunities(
+//       communities.map((community) =>
+//         community.id === id ? { ...community, joined: true } : community
+//       )
+//     );
+//   };
+
+//   const handleLike = (postId) => {
+//     setPosts(
+//       posts.map((post) =>
+//         post.id === postId ? { ...post, likes: post.likes + 1 } : post
+//       )
+//     );
+//   };
+//   const handleComment = (postId, comment) => {
+//     setPosts(
+//       posts.map((post) =>
+//         post.id === postId
+//           ? {
+//               ...post,
+//               comments: post.comments + 1,
+//               commentList: [
+//                 ...(post.commentList || []),
+//                 { text: comment, upvotes: 0 },
+//               ],
+//             }
+//           : post
+//       )
+//     );
+//   };
+
+//    const handleCommentUpvote = (postId, commentIndex) => {
+//      setPosts(
+//        posts.map((post) =>
+//          post.id === postId
+//            ? {
+//                ...post,
+//                commentList: post.commentList.map((comment, index) =>
+//                  index === commentIndex
+//                    ? { ...comment, upvotes: comment.upvotes + 1 }
+//                    : comment
+//                ),
+//              }
+//            : post
+//        )
+//      );
+//    };
+
+//    const handleCommentDelete = (postId, commentIndex) => {
+//      setPosts(
+//        posts.map((post) =>
+//          post.id === postId
+//            ? {
+//                ...post,
+//                comments: post.comments - 1,
+//                commentList: post.commentList.filter(
+//                  (_, index) => index !== commentIndex
+//                ),
+//              }
+//            : post
+//        )
+//      );
+//    };
+
+//   return (
+//     <div>
+//       <h1>Communities</h1>
+//       <CommunityList
+//         communities={communities}
+//         onJoin={handleJoin}
+//         posts={posts}
+//         onLike={handleLike}
+//         onComment={handleComment}
+//         onCommentUpvote={handleCommentUpvote}
+//         onCommentDelete={handleCommentDelete}
+//       />
+//     </div>
+//   );
+// };
+
+// export default CommunityPage;
+
+
+import React, { useState } from "react";
 import CommunityList from "./CommunityList";
-import { initialCommunities, initialPosts } from "./data";
 
 const CommunityPage = () => {
-  const [communities, setCommunities] = useState([]);
-  const [posts, setPosts] = useState([]);
+  const [communities, setCommunities] = useState([
+    { id: 1, name: "askphilosophy", joined: false },
+    { id: 2, name: "askscience", joined: false },
+  ]);
 
-  // Simulate fetching data
-  useEffect(() => {
-    setCommunities(initialCommunities);
-    setPosts(initialPosts);
-  }, []);
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      communityId: 1,
+      title:
+        "What pieces of philosophy would you recommend to a beginner on the meaning of true love?",
+      content:
+        "Lately I've been reflecting a lot on this topic and I've really resonated with Alan Watts talks about love and falling in love...",
+      likes: 10,
+      comments: 0,
+      upvoteRate: 100,
+      commentList: [],
+    },
+    {
+      id: 2,
+      communityId: 2,
+      title:
+        "Can quantum entanglement be used for faster-than-light communication?",
+      content:
+        "I've been reading about quantum entanglement and I am curious about its practical applications...",
+      likes: 15,
+      comments: 2,
+      upvoteRate: 95,
+      commentList: [
+        { text: "This is interesting!", upvotes: 2 },
+        { text: "Can you explain more?", upvotes: 1 },
+      ],
+    },
+  ]);
 
   const handleJoin = (id) => {
     setCommunities(
@@ -260,6 +383,56 @@ const CommunityPage = () => {
     );
   };
 
+  const handleComment = (postId, comment) => {
+    setPosts(
+      posts.map((post) =>
+        post.id === postId
+          ? {
+              ...post,
+              comments: post.comments + 1,
+              commentList: [
+                ...(post.commentList || []),
+                { text: comment, upvotes: 0 },
+              ],
+            }
+          : post
+      )
+    );
+  };
+
+  const handleCommentUpvote = (postId, commentIndex) => {
+    setPosts(
+      posts.map((post) =>
+        post.id === postId
+          ? {
+              ...post,
+              commentList: post.commentList.map((comment, index) =>
+                index === commentIndex
+                  ? { ...comment, upvotes: comment.upvotes + 1 }
+                  : comment
+              ),
+            }
+          : post
+      )
+    );
+  };
+
+  const handleCommentDelete = (postId, commentIndex) => {
+    setPosts(
+      posts.map((post) =>
+        post.id === postId
+          ? {
+              ...post,
+              comments: post.comments - 1,
+              commentList: post.commentList.filter(
+                (_, index) => index !== commentIndex
+              ),
+            }
+          : post
+      )
+    );
+  };
+
   return (
     <div>
       <h1>Communities</h1>
@@ -268,6 +441,9 @@ const CommunityPage = () => {
         onJoin={handleJoin}
         posts={posts}
         onLike={handleLike}
+        onComment={handleComment}
+        onCommentUpvote={handleCommentUpvote}
+        onCommentDelete={handleCommentDelete}
       />
     </div>
   );
