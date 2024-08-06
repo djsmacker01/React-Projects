@@ -334,7 +334,7 @@ import CommunityList from "./CommunityList";
 const CommunityPage = () => {
   const [communities, setCommunities] = useState([
     { id: 1, name: "askphilosophy", joined: false },
-    // { id: 2, name: "askscience", joined: false },
+    { id: 2, name: "askscience", joined: false },
   ]);
 
   const [posts, setPosts] = useState([
