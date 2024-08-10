@@ -1,6 +1,6 @@
 import React from "react";
 import Post from "../components/Post";
-// import JoinButton from "../components/JoinButton";
+import JoinButton from "../components/JoinButton";
 
 const Community = ({
   community,
