@@ -25,7 +25,7 @@ const Community = ({
         onLike={onLike}
         onComment={onComment}
         onCommentUpvote={onCommentUpvote}
-        // onCommentDelete={onCommentDelete}
+        onCommentDelete={onCommentDelete}
       />
     ))}
   </div>
