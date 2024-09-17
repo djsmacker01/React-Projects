@@ -5,13 +5,15 @@ import './index.css'
 import './components/Header/Header.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 import CommunityPage from './components/CommunityPage'
+import CreatePost from './components/CreatePost'
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       {/* <App4 /> */}
-      <CommunityPage/>
+      <CommunityPage />
+      <CreatePost/>
     </Router>
   </React.StrictMode>
 );
