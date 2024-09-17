@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import './CreatePost'
 
 const CreatePost = () => {
   const [activeTab, setActiveTab] = useState("Text");
