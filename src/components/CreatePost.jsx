@@ -1,50 +1,34 @@
 import React, { useState, useEffect } from "react";
-// import './CreatePost.css'
+// import "./App.css"; // You can style this as needed
 
 const CreatePost = () => {
-  const [activeTab, setActiveTab] = useState("Text");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [file, setFile] = useState(null);
   const [posts, setPosts] = useState([]);
-  const [drafts, setDrafts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
 
-  // Load posts and drafts from localStorage on component mount
   useEffect(() => {
+    // Load saved posts from localStorage on component mount
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    const savedDrafts = JSON.parse(localStorage.getItem("drafts")) || [];
     setPosts(savedPosts);
-    setDrafts(savedDrafts);
   }, []);
 
-  // Save posts and drafts to localStorage whenever they are updated
   useEffect(() => {
+    // Save posts to localStorage whenever they change
     localStorage.setItem("posts", JSON.stringify(posts));
-    localStorage.setItem("drafts", JSON.stringify(drafts));
-  }, [posts, drafts]);
+  }, [posts]);
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
-  const handleFileUpload = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const applyFormatting = (format) => {
-    document.execCommand(format, false, null);
-  };
-
-  const handleSaveDraft = () => {
-    const newDraft = { title, body, file, id: Date.now() };
-    setDrafts([...drafts, newDraft]);
-    resetForm();
+  const handleFileChange = (e) => {
+    setFile(URL.createObjectURL(e.target.files[0]));
   };
 
   const handlePost = () => {
+    if (!title || !body) {
+      alert("Title and Body are required to post!");
+      return;
+    }
     if (editingPost) {
-      // If editing, update the existing post
       const updatedPosts = posts.map((post) =>
         post.id === editingPost.id
           ? { ...editingPost, title, body, file }
@@ -59,111 +43,61 @@ const CreatePost = () => {
     resetForm();
   };
 
-  const handleEditPost = (post) => {
-    setEditingPost(post);
-    setTitle(post.title);
-    setBody(post.body);
-    setFile(post.file);
-  };
-
-  const handleDeletePost = (id) => {
-    setPosts(posts.filter((post) => post.id !== id));
-  };
-
-  const handleEditDraft = (draft) => {
-    setEditingPost(draft);
-    setTitle(draft.title);
-    setBody(draft.body);
-    setFile(draft.file);
+  const handleDelete = (id) => {
+    const filteredPosts = posts.filter((post) => post.id !== id);
+    setPosts(filteredPosts);
   };
 
   const resetForm = () => {
     setTitle("");
     setBody("");
     setFile(null);
+    setEditingPost(null);
   };
 
   return (
-    <div className="create-post">
-      <h2>Create post</h2>
+    <div className="container">
+      <div className="post-creator">
+        <h2>Create Post</h2>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+        />
+        <textarea
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder="Write your post here..."></textarea>
 
-      <div className="tabs">
-        <button onClick={() => handleTabClick("Text")}>Text</button>
-        <button onClick={() => handleTabClick("Images & Video")}>
-          Images & Video
-        </button>
-        <button onClick={() => handleTabClick("Link")}>Link</button>
-        <button onClick={() => handleTabClick("Poll")}>Poll</button>
-        <button onClick={() => handleTabClick("AMA")}>AMA</button>
-      </div>
-
-      {/* Conditional rendering based on the active tab */}
-      {activeTab === "Text" && (
-        <div>
-          <input
-            type="text"
-            placeholder="Title*"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <div className="editor-controls">
-            <button onClick={() => applyFormatting("bold")}>B</button>
-            <button onClick={() => applyFormatting("italic")}>I</button>
-            <button onClick={() => applyFormatting("underline")}>U</button>
-          </div>
-          <div
-            className="body-editor"
-            contentEditable
-            onInput={(e) => setBody(e.currentTarget.innerHTML)}
-            placeholder="Body"
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              minHeight: "100px",
-            }}></div>
+        <div className="file-input">
+          <label htmlFor="file">Upload Image/Video</label>
+          <input type="file" id="file" onChange={handleFileChange} />
         </div>
-      )}
 
-      {activeTab === "Images & Video" && (
-        <div>
-          <input type="file" onChange={handleFileUpload} />
-          {file && <p>Uploaded file: {file.name}</p>}
-        </div>
-      )}
-
-      {/* Form action buttons */}
-      <div className="form-actions">
-        <button onClick={handleSaveDraft}>Save Draft</button>
         <button onClick={handlePost}>
           {editingPost ? "Update Post" : "Post"}
         </button>
       </div>
 
-      {/* Display drafts */}
-      <h3>Drafts</h3>
-      <ul>
-        {drafts.map((draft) => (
-          <li key={draft.id}>
-            <h4>{draft.title}</h4>
-            <button onClick={() => handleEditDraft(draft)}>Edit Draft</button>
-          </li>
-        ))}
-      </ul>
-
-      {/* Display posts */}
-      <h3>Posts</h3>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <h4>{post.title}</h4>
-            <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
-            <button onClick={() => handleEditPost(post)}>Edit Post</button>
-            <button onClick={() => handleDeletePost(post.id)}>
-              Delete Post
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="posts-list">
+        <h2>Posts</h2>
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div key={post.id} className="post">
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+              {post.file && (
+                <img src={post.file} alt="uploaded content" width="200px" />
+              )}
+              <button onClick={() => handleDelete(post.id)}>Delete</button>
+              <button onClick={() => setEditingPost(post)}>Edit</button>
+            </div>
+          ))
+        ) : (
+          <p>No posts available.</p>
+        )}
+      </div>
     </div>
   );
 };
