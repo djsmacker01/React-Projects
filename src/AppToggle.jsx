@@ -1,156 +1,304 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-import './App.css';
+// 
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    title: '',
-    tags: [],
-    content: '',
+const App5 = () => {
+  const [activeTab, setActiveTab] = useState("Text");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [tags, setTags] = useState([]);
+  const [formatting, setFormatting] = useState({
+    bold: false,
+    italic: false,
+    strikethrough: false,
   });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [images, setImages] = useState([]);
+  const [link, setLink] = useState("");
+  const [pollOptions, setPollOptions] = useState([""]);
+  const [amaQuestion, setAmaQuestion] = useState("");
+  const [showForm, setShowForm] = useState(false); // State for toggling the form
+  const [posts, setPosts] = useState([]); // State to store posts
+  const [editingPostIndex, setEditingPostIndex] = useState(null); // State to track which post is being edited
 
-  const maxContentLength = 300; // Set a character limit for the content field
-
-  // Options for tags
-  const tagOptions = [
-    { value: 'physics', label: 'Physics' },
-    { value: 'philosophy', label: 'Philosophy' },
-    { value: 'love', label: 'Love' },
-    { value: 'science', label: 'Science' },
-    { value: 'psychology', label: 'Psychology' }
-  ];
-
-  // Toggle the form visibility
-  const toggleForm = () => {
-    setShowForm(!showForm);
+  // Toggle the formatting (bold, italic, strikethrough)
+  const toggleFormatting = (style) => {
+    setFormatting((prev) => ({
+      ...prev,
+      [style]: !prev[style],
+    }));
   };
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
 
-  // Handle tag changes from react-select
-  const handleTagChange = (selectedOptions) => {
-    setFormData({ ...formData, tags: selectedOptions });
+  // Function to handle image upload
+  const handleImageUpload = (e) => {
+    const uploadedImages = Array.from(e.target.files);
+    setImages([...images, ...uploadedImages]);
   };
 
-  // Validate form fields
-  const validateForm = () => {
-    let tempErrors = {};
-    if (!formData.title) tempErrors.title = 'Title is required';
-    if (!formData.content) tempErrors.content = 'Content is required';
-    else if (formData.content.length > maxContentLength) {
-      tempErrors.content = `Content cannot exceed ${maxContentLength} characters`;
+  const handlePollChange = (index, value) => {
+    const updatedOptions = [...pollOptions];
+    updatedOptions[index] = value;
+    setPollOptions(updatedOptions);
+  };
+
+  const addPollOption = () => {
+    setPollOptions([...pollOptions, ""]);
+  };
+
+  const handleSaveDraft = () => {
+    const postData = {
+      title,
+      body,
+      tags,
+      images,
+      link,
+      pollOptions,
+      amaQuestion,
+    };
+
+    // If editing, update the post; otherwise, create a new post
+    if (editingPostIndex !== null) {
+      const updatedPosts = posts.map((post, index) =>
+        index === editingPostIndex ? postData : post
+      );
+      setPosts(updatedPosts);
+      setEditingPostIndex(null);
+    } else {
+      setPosts([...posts, postData]);
     }
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
+
+    // Reset the form
+    resetForm();
+    alert(editingPostIndex !== null ? "Post updated!" : "Post created!");
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      try {
-        // Simulate an API call using fetch
-        const response = await fetch('https://api.example.com/posts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            title: formData.title,
-            tags: formData.tags.map(tag => tag.value), // Send tag values, not label
-            content: formData.content,
-          }),
-        });
-        
-        if (response.ok) {
-          console.log('Post submitted successfully');
-          alert('Post submitted successfully!');
-          // Reset form after submission
-          setFormData({ title: '', tags: [], content: '' });
-          setErrors({});
-        } else {
-          alert('Failed to submit post. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error submitting post:', error);
-        alert('Failed to submit post. Please check your network.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
+  const handleEditPost = (index) => {
+    const post = posts[index];
+    setTitle(post.title);
+    setBody(post.body);
+    setTags(post.tags);
+    setImages(post.images);
+    setLink(post.link);
+    setPollOptions(post.pollOptions);
+    setAmaQuestion(post.amaQuestion);
+    setEditingPostIndex(index);
+    setShowForm(true);
+  };
+
+  const handleDeletePost = (index) => {
+    const updatedPosts = posts.filter((_, idx) => idx !== index);
+    setPosts(updatedPosts);
+  };
+
+  const resetForm = () => {
+    setTitle("");
+    setBody("");
+    setTags([]);
+    setImages([]);
+    setLink("");
+    setPollOptions([""]);
+    setAmaQuestion("");
+    setFormatting({
+      bold: false,
+      italic: false,
+      strikethrough: false,
+    });
   };
 
   return (
-    <div className="App">
-      <button onClick={toggleForm} className="toggle-button">
-        {showForm ? 'Close' : 'Create a Post'}
+    <div className="container">
+      <button
+        onClick={() => setShowForm(!showForm)}
+        className="create-post-button">
+        {showForm ? "Close Post Form" : "Create Post"}
       </button>
 
       {showForm && (
-        <form className="post-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className={errors.title ? 'input-error' : ''}
-              placeholder="Enter title..."
-            />
-            {errors.title && <span className="error-message">{errors.title}</span>}
+        <div className="create-post-form">
+          <h2>{editingPostIndex !== null ? "Edit Post" : "Create Post"}</h2>
+          <div className="tabs">
+            {["Text", "Images & Video", "Link", "Poll", "AMA"].map((tab) => (
+              <button
+                key={tab}
+                className={`tab ${activeTab === tab ? "active" : ""}`}
+                onClick={() => handleTabClick(tab)}>
+                {tab}
+              </button>
+            ))}
           </div>
 
-          <div className="form-group">
-            <label>Tags</label>
-            <Select
-              isMulti
-              name="tags"
-              options={tagOptions}
-              value={formData.tags}
-              onChange={handleTagChange}
-              placeholder="Select tags..."
-              className={errors.tags ? 'input-error' : ''}
-            />
-          </div>
+          {/* Text Tab */}
+          {activeTab === "Text" && (
+            <div className="post-form">
+              <input
+                type="text"
+                placeholder="Title*"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-          <div className="form-group">
-            <label>Content</label>
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              className={errors.content ? 'input-error' : ''}
-              placeholder="Enter content..."
-            ></textarea>
-            <div className="word-count">{formData.content.length}/{maxContentLength} characters</div>
-            {errors.content && <span className="error-message">{errors.content}</span>}
-          </div>
+              <div className="tag-section">
+                <input
+                  type="text"
+                  placeholder="Add tags"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && e.target.value) {
+                      setTags([...tags, e.target.value]);
+                      e.target.value = "";
+                    }
+                  }}
+                />
+                <div className="tags">
+                  {tags.map((tag, idx) => (
+                    <span key={idx} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-          <div className="form-buttons">
-            <button type="submit" className="submit-button" disabled={isSubmitting}>
-              {isSubmitting ? 'Posting...' : 'Post'}
-            </button>
-            <button
-              type="button"
-              className="save-draft-button"
-              onClick={() => setFormData({ title: '', tags: [], content: '' })}
-            >
-              Save Draft
-            </button>
-          </div>
-        </form>
+              <div className="formatting-buttons">
+                <button
+                  onClick={() => toggleFormatting("bold")}
+                  className={formatting.bold ? "active" : ""}>
+                  B
+                </button>
+                <button
+                  onClick={() => toggleFormatting("italic")}
+                  className={formatting.italic ? "active" : ""}>
+                  I
+                </button>
+                <button
+                  onClick={() => toggleFormatting("strikethrough")}
+                  className={formatting.strikethrough ? "active" : ""}>
+                  S
+                </button>
+              </div>
+
+              <textarea
+                style={{
+                  fontWeight: formatting.bold ? "bold" : "normal",
+                  fontStyle: formatting.italic ? "italic" : "normal",
+                  textDecoration: formatting.strikethrough
+                    ? "line-through"
+                    : "none",
+                }}
+                placeholder="Body"
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+
+              <div className="buttons">
+                <button onClick={handleSaveDraft}>Save Draft</button>
+              </div>
+            </div>
+          )}
+
+          {/* Images & Video Tab */}
+          {activeTab === "Images & Video" && (
+            <div className="post-form">
+              <input
+                type="file"
+                accept="image/*,video/*"
+                multiple
+                onChange={handleImageUpload}
+              />
+              <div className="image-preview">
+                {images.length > 0 &&
+                  images.map((image, idx) => (
+                    <div key={idx}>
+                      <p>{image.name}</p>
+                    </div>
+                  ))}
+              </div>
+
+              <div className="buttons">
+                <button onClick={handleSaveDraft}>Save Draft</button>
+              </div>
+            </div>
+          )}
+
+          {/* Link Tab */}
+          {activeTab === "Link" && (
+            <div className="post-form">
+              <input
+                type="text"
+                placeholder="Add a link"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+
+              <div className="buttons">
+                <button onClick={handleSaveDraft}>Save Draft</button>
+              </div>
+            </div>
+          )}
+
+          {/* Poll Tab */}
+          {activeTab === "Poll" && (
+            <div className="post-form">
+              {pollOptions.map((option, idx) => (
+                <input
+                  key={idx}
+                  type="text"
+                  placeholder={`Option ${idx + 1}`}
+                  value={option}
+                  onChange={(e) => handlePollChange(idx, e.target.value)}
+                />
+              ))}
+              <button onClick={addPollOption}>Add another option</button>
+
+              <div className="buttons">
+                <button onClick={handleSaveDraft}>Save Draft</button>
+              </div>
+            </div>
+          )}
+
+          {/* AMA Tab */}
+          {activeTab === "AMA" && (
+            <div className="post-form">
+              <input
+                type="text"
+                placeholder="Ask me anything"
+                value={amaQuestion}
+                onChange={(e) => setAmaQuestion(e.target.value)}
+              />
+
+              <div className="buttons">
+                <button onClick={handleSaveDraft}>Save Draft</button>
+              </div>
+            </div>
+          )}
+        </div>
       )}
+
+      {/* Display Posts */}
+      <div className="posts-section">
+        <h2>Posts</h2>
+        {posts.length === 0 && <p>No posts available.</p>}
+        {posts.map((post, index) => (
+          <div key={index} className="post">
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+            <div className="post-tags">
+              {post.tags.map((tag, idx) => (
+                <span key={idx} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="buttons">
+              <button onClick={() => handleEditPost(index)}>Edit</button>
+              <button onClick={() => handleDeletePost(index)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default App5;
