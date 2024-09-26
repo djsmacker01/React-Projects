@@ -1,0 +1,107 @@
+.App {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.toggle-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: opacity 0.5s ease;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #007BFF;
+}
+
+textarea {
+  height: 120px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.word-count {
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-button, .save-draft-button {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-draft-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+.save-draft-button:hover {
+  background-color: #5a6268;
+}
