@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <CommunityPage />
       {/* <CreatePost/> */}
       <AppToggle/>
-      <App5/>
+      {/* <App5/> */}
     </Router>
   </React.StrictMode>
 );
