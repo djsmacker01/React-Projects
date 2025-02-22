@@ -6,7 +6,7 @@ import './components/Header/Header.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 import CommunityPage from './components/CommunityPage'
 import CreatePost from './components/CreatePost'
-import App5 from './App5'
+import App from './App'
 import AppToggle from './AppToggle'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* <CommunityPage /> */}
       {/* <CreatePost/> */}
       {/* <AppToggle/> */}
-      {/* <App5/> */}
+      <App/>
     </Router>
   </React.StrictMode>
 );
