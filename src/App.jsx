@@ -1,3 +1,5 @@
+import './styles.css'
+import coreConceptsImg from "./assets/react-core-concepts.png";
 function App() {
   return (
     <div>
