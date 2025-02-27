@@ -2,6 +2,10 @@ import './styles.css'
 import coreConceptsImg from "./assets/react-core-concepts.png";
 
 
+const contentDescriptions = ['Fundamentals', 'Crucial', 'Core']
+function genRandom(max) {
+  return Math.floor(Math.random()* (max + 1))
+}
 
 function Header() {
   return (
@@ -10,7 +14,7 @@ function Header() {
       <img src={coreConceptsImg} alt="Stylized atom" />
       <h1>React Essentials</h1>
       <p>
-        Fundamental React concepts you will need for almost any app you are
+        {contentDescriptions[genRandom(2)]} React concepts you will need for almost any app you are
         going to build!
       </p>
     </header>
