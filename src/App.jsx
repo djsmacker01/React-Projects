@@ -8,17 +8,30 @@ function genRandom(max) {
 }
 
 function Header() {
+  const descriptions = contentDescriptions[genRandom(2)]
+
+  
   return (
     <header>
       {/* <img src="src/assets/react-core-concepts.png" alt="Stylized atom" /> */}
       <img src={coreConceptsImg} alt="Stylized atom" />
       <h1>React Essentials</h1>
       <p>
-        {contentDescriptions[genRandom(2)]} React concepts you will need for almost any app you are
+        {descriptions} React concepts you will need for almost any app you are
         going to build!
       </p>
     </header>
   );
+}
+
+function CoreConcepts() { 
+  return (
+    <li>
+      <img src="..." alt="" />
+      <h3>Title</h3>
+      <p>Description</p>
+    </li>
+  )
 }
 function App() {
   return (
