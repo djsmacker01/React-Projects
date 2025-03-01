@@ -29,8 +29,8 @@ function CoreConcepts(props) {
   return (
     <li>
       <img src="..." alt="" />
-      <h3>Title</h3>
-      <p>Description</p>
+      <h3>{props.Title}</h3>
+      <p>{props.Description}</p>
     </li>
   )
 }
