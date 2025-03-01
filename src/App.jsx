@@ -1,5 +1,6 @@
 import './styles.css'
 import coreConceptsImg from "./assets/react-core-concepts.png";
+import components from "./assets/components.png";
 
 
 const contentDescriptions = ['Fundamentals', 'Crucial', 'Core']
@@ -24,7 +25,7 @@ function Header() {
   );
 }
 
-function CoreConcepts() { 
+function CoreConcepts(props) { 
   return (
     <li>
       <img src="..." alt="" />
@@ -42,9 +43,26 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcepts title='Components' descriptions='The Core UI building block'
-            img=""/>
-            
+            <CoreConcepts
+              title="Components"
+              descriptions="The Core UI building block"
+              image={components}
+            />
+            <CoreConcepts
+              title="Components"
+              descriptions="The Core UI building block"
+              image={components}
+            />
+            <CoreConcepts
+              title="Components"
+              descriptions="The Core UI building block"
+              image={components}
+            />
+            <CoreConcepts
+              title="Components"
+              descriptions="The Core UI building block"
+              image={components}
+            />
           </ul>
         </section>
       </main>
