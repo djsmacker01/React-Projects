@@ -41,6 +41,10 @@ function App() {
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
+          <ul>
+            <CoreConcepts />
+            
+          </ul>
         </section>
       </main>
     </div>
