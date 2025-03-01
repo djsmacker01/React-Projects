@@ -42,7 +42,8 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcepts />
+            <CoreConcepts title='Components' descriptions='The Core UI building block'
+            img=""/>
             
           </ul>
         </section>
