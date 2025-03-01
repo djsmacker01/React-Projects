@@ -39,10 +39,9 @@ function App() {
       <Header />
 
       <main>
-        <section id='core-concepts'>
-
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
         </section>
-        <h2>Time to get started!</h2>
       </main>
     </div>
   );
