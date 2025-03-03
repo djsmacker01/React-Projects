@@ -1,8 +1,4 @@
 import './styles.css'
-// import coreConceptsImg from "./assets/react-core-concepts.png";
-// import components from "./assets/components.png";
-// import config from "./assets/config.png";
-// import jsx from "./assets/jsx-ui.png";
 import { CORE_CONCEPTS } from './data';
 import Header from './components/Header/Header'; 
 import CoreConcept from './components/CoreConcept/CoreConcept';
