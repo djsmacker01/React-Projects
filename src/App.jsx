@@ -8,7 +8,7 @@ import TabButton from "./components/CoreConcept/TabButton";
 const contentDescriptions = ["Fundamentals", "Crucial", "Core"];
 
 function App() {
-  useState()
+  const [tabContent, setTabContent] = useState()
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
     tabContent = selectedBtn
