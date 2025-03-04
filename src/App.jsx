@@ -11,8 +11,8 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState('Please click a topic to select')
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
-    tabContent = selectedBtn
-    console.log(tabContent);
+    setSelectedTopic(selectedBtn)
+    console.log(selectedTopic);
   }
   return (
     <div>
@@ -39,7 +39,7 @@ function App() {
             <TabButton onSelect={() => handleClick("State")}>State</TabButton>
           </menu>
         </section>
-       {tabContent}
+       {selectedTopic}
       </main>
     </div>
   );
