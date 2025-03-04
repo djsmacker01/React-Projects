@@ -7,9 +7,11 @@ import TabButton from "./components/CoreConcept/TabButton";
 const contentDescriptions = ["Fundamentals", "Crucial", "Core"];
 
 function App() {
+  let tabContent = 'Button clicked'
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
-    console.log(selectedBtn);
+    tabContent = selectedBtn
+    console.log(tabContent);
   }
   return (
     <div>
@@ -36,7 +38,7 @@ function App() {
             <TabButton onSelect={() => handleClick("State")}>State</TabButton>
           </menu>
         </section>
-        dynamic content
+       {tabContent}
       </main>
     </div>
   );
