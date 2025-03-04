@@ -9,9 +9,10 @@ function genRandom(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 function App() {
-    function handleClick() {
-        console.log('Button Clicked')
-    }
+  // This should output a content for each button clicked
+  function handleClick(selectedBtn) {
+    console.log(selectedBtn);
+  }
   return (
     <div>
       <Header />
@@ -29,10 +30,12 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={handleClick}>Components</TabButton>
-            <TabButton onSelect={handleClick}>Jsx</TabButton>
-            <TabButton onSelect={handleClick}>Props</TabButton>
-            <TabButton onSelect={handleClick}>State</TabButton>
+            <TabButton onSelect={() => handleClick("Components")}>
+              Components
+            </TabButton>
+            <TabButton onSelect={() =>handleClick("Jsx")}>Jsx</TabButton>
+            <TabButton onSelect={() => handleClick("Props")}>Props</TabButton>
+            <TabButton onSelect={() => handleClick("State")}>State</TabButton>
           </menu>
         </section>
         dynamic content
