@@ -5,9 +5,7 @@ import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/CoreConcept/TabButton";
 
 const contentDescriptions = ["Fundamentals", "Crucial", "Core"];
-function genRandom(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
+
 function App() {
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
