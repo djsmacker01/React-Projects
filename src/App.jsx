@@ -35,6 +35,7 @@ function App() {
             <TabButton onSelect={handleClick}>State</TabButton>
           </menu>
         </section>
+        dynamic content
       </main>
     </div>
   );
