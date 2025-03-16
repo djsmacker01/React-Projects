@@ -4,15 +4,16 @@ import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/CoreConcept/TabButton";
-
+import { EXAMPLES} from './dataContent'
 const contentDescriptions = ["Fundamentals", "Crucial", "Core"];
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState('Please click a topic to select')
+  const [selectedTopic, setSelectedTopic] = useState('components')
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
+    // selectedBtn => 'components', 'jsx', 'props','state'
     setSelectedTopic(selectedBtn)
-    console.log(selectedTopic);
+    // console.log(selectedTopic);
   }
   return (
     <div>
@@ -34,15 +35,21 @@ function App() {
             <TabButton onSelect={() => handleClick("Components")}>
               Components
             </TabButton>
-            <TabButton onSelect={() =>handleClick("Jsx")}>Jsx</TabButton>
-            <TabButton onSelect={() => handleClick("Props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("State")}>State</TabButton>
+            <TabButton onSelect={() => handleClick("jsx")}>Jsx</TabButton>
+            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
           <div className="tab-con">
-            h3
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
           </div>
         </section>
-       {selectedTopic}
+        {selectedTopic}
       </main>
     </div>
   );
