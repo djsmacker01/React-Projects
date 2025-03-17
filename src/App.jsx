@@ -45,7 +45,7 @@ function App() {
               <p>{EXAMPLES[selectedTopic].description}</p>
               <pre>
                 <code>{EXAMPLES[selectedTopic].code}</code>
-              {/* </pre> */}
+              </pre>
             </div>
           ) : null}
         </section>
