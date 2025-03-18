@@ -32,7 +32,7 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleClick()}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
             <TabButton onSelect={() => handleClick("jsx")}>Jsx</TabButton>
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
