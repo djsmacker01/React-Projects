@@ -8,7 +8,7 @@ import { EXAMPLES } from "./dataContent";
 const contentDescriptions = ["Fundamentals", "Crucial", "Core"];
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
   // This should output a content for each button clicked
   function handleClick(selectedBtn) {
     // selectedBtn => 'components', 'jsx', 'props','state'
@@ -49,7 +49,7 @@ function App() {
             </div>
           ) : null}
         </section>
-        {selectedTopic}
+        {/* {selectedTopic} */}
       </main>
     </div>
   );
